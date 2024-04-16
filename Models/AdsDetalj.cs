@@ -2,5 +2,11 @@
 {
     public class AdsDetalj
     {
+        public AdsDetalj() { }
+        public string ad_id { get; set; }
+        public int ad_varupris {  get; set; }
+        public string ad_innehall { get; set; }
+        public string ad_rubrik { get; set; }
+        public int ad_annonspris { get; set; }
     }
 }
