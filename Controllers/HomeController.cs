@@ -25,13 +25,15 @@ namespace Annonssystem.Controllers
         }
 
         
-        /* Skapa annonser */
         public IActionResult Annons()
         {
             return View();
         }
 
+        //public int CheckPrenumerant()
+        //{
 
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
