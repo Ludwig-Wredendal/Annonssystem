@@ -1,0 +1,47 @@
+﻿@model Annonssystem.Models.PrenumerantDetalj
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prenumerant Details</title>
+</head>
+<body>
+    <h1>Prenumerant Details</h1>
+
+    <form method="get" action="@Url.Action("GetPrenumerant", "Home")">
+        <label for="prenumerationsnummer">Enter Prenumerationsnummer:</label>
+        <input type="text" id="prenumerationsnummer" name="prenumerationsnummer">
+        <button type="submit">Search</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <table>
+            <tr>
+                <th>Prenumerationsnummer</th>
+                <th>Personnummer</th>
+                <th>Förnamn</th>
+                <th>Efternamn</th>
+                <th>Telefonnummer</th>
+                <th>Utdelningsadress</th>
+                <th>Postnummer</th>
+                <th>Ort</th>
+            </tr>
+            <tr>
+                <td>@Model.pr_prenumerationsnummer</td>
+                <td>@Model.pr_personnummer</td>
+                <td>@Model.pr_fornamn</td>
+                <td>@Model.pr_efternamn</td>
+                <td>@Model.pr_telefonnummer</td>
+                <td>@Model.pr_utdelningsadress</td>
+                <td>@Model.pr_postnummer</td>
+                <td>@Model.pr_ort</td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <p>No prenumerant found with the given ID.</p>
+    }
+</body>
+</html>
