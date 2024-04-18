@@ -19,6 +19,9 @@ namespace Annonssystem.Controllers
             _client.BaseAddress = baseAdress;
         }
 
+        /* PRENUMERANT TJOFS */
+
+        // Hämtar en lista över alla prenumeranter, behövs nog ej.
         public IActionResult Index()
         {
             List<PrenumerantDetalj> prenumerantLista = new List<PrenumerantDetalj>();
@@ -53,8 +56,49 @@ namespace Annonssystem.Controllers
         }
 
 
+        /* FÖRETAG TJOFS */
+        [HttpGet]
+        public IActionResult PostForetag()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PostForetag(AnnonsorerDetalj ad) 
+        {
+            AnnonsorerMetoder am = new AnnonsorerMetoder();
+            int i = 0;
+            string error = "";
+            i = am.PostForetag(ad, out error);
+            ViewBag.error = error;
+            
+            return View();
+        }
 
 
+        /* ANNONS TJOFS */
+        [HttpGet]
+        public IActionResult PostAds()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PostAds(AdsDetalj ad)
+        {
+            AdsMetoder am = new AdsMetoder();
+            int i = 0;
+            string error = "";
+            i = am.PostAds(ad, out error);
+            ViewBag.error = error;
+
+            return View();
+        }
+
+        public IActionResult Annons()
+        {
+            return View();
+        }
 
 
 
@@ -65,7 +109,7 @@ namespace Annonssystem.Controllers
         }
 
 
-        // Per video lösning:
+        // Per's video lösning:
         public async Task<IActionResult> testaGet()
         {
             List<PrenumerantDetalj> prenumerantlista = new List<PrenumerantDetalj>();

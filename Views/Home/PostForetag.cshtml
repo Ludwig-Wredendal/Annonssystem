@@ -1,0 +1,75 @@
+﻿@model Annonssystem.Models.AnnonsorerDetalj
+
+@{
+    ViewData["Title"] = "PostForetag";
+}
+
+<h1>PostForetag</h1>
+
+<h4>AnnonsorerDetalj</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PostForetag">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="an_id" class="control-label"></label>
+                <input asp-for="an_id" class="form-control" />
+                <span asp-validation-for="an_id" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="an_prenumerant" class="control-label"></label>
+                <input asp-for="an_prenumerant" class="form-control" />
+                <span asp-validation-for="an_prenumerant" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_ads" class="control-label"></label>
+                <input asp-for="an_ads" class="form-control" />
+                <span asp-validation-for="an_ads" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_foretag" class="control-label"></label>
+                <input asp-for="an_foretag" class="form-control" />
+                <span asp-validation-for="an_foretag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_namn" class="control-label"></label>
+                <input asp-for="an_namn" class="form-control" />
+                <span asp-validation-for="an_namn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_organisationsnummer" class="control-label"></label>
+                <input asp-for="an_organisationsnummer" class="form-control" />
+                <span asp-validation-for="an_organisationsnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_telefonnummer" class="control-label"></label>
+                <input asp-for="an_telefonnummer" class="form-control" />
+                <span asp-validation-for="an_telefonnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_utdelningsadress" class="control-label"></label>
+                <input asp-for="an_utdelningsadress" class="form-control" />
+                <span asp-validation-for="an_utdelningsadress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_postnummer" class="control-label"></label>
+                <input asp-for="an_postnummer" class="form-control" />
+                <span asp-validation-for="an_postnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="an_ort" class="control-label"></label>
+                <input asp-for="an_ort" class="form-control" />
+                <span asp-validation-for="an_ort" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -4,7 +4,7 @@
 
 <h1>Annons</h1>
 
-<form>
+<form id="userForm">
     <div>
         <label>
             <input type="radio" name="annonsType" value="prenumerant" checked>
@@ -17,6 +17,46 @@
             Företag
         </label>
     </div>
+    <br />
+    <div id="prenumerantSection" style="display:none;">
+        <label for="prenumerationsnummer">Enter Prenumerationsnummer:</label>
+        <input type="text" id="prenumerationsnummer" name="prenumerationsnummer">
+    </div>
     <button type="submit">Submit</button>
 </form>
 
+<script>
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        
+        var formData = new FormData(event.target); // Get form data
+        
+        var annonsType = formData.get("annonsType"); // Get selected radio button value
+        
+        if (annonsType === "prenumerant") {
+            var prenumerationsnummer = formData.get("prenumerationsnummer");
+            if (prenumerationsnummer.trim() === "") {
+                alert("Please enter your Prenumerationsnummer.");
+                return;
+            }
+            // Redirect to the action that fetches prenumerant details
+            window.location.href = "/Home/GetPrenumerant?prenumerationsnummer=" + encodeURIComponent(prenumerationsnummer);
+        } else {
+            // Redirect to the action for företag (business)
+            // Modify the URL as needed
+            window.location.href = "/Home/ForetagAction";
+        }
+    });
+
+    // Show/hide prenumerant section based on radio button selection
+    document.querySelectorAll('input[name="annonsType"]').forEach(function(radio) {
+        radio.addEventListener("change", function() {
+            var prenumerantSection = document.getElementById("prenumerantSection");
+            if (this.value === "prenumerant") {
+                prenumerantSection.style.display = "block";
+            } else {
+                prenumerantSection.style.display = "none";
+            }
+        });
+    });
+</script>

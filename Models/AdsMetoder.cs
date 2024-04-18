@@ -13,7 +13,7 @@ namespace Annonssystem.Models
     {
         public AdsMetoder() { }
 
-        public int InsertAds(AdsDetalj ad, out string errormsg)
+        public int PostAds(AdsDetalj ad, out string errormsg)
         {
             //skapa SQL-connection
             SqlConnection dbConnection = new SqlConnection();
@@ -22,7 +22,7 @@ namespace Annonssystem.Models
             dbConnection.ConnectionString = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = db_Annons; Integrated Security = True";
 
             // sqlstring och lägg till en student i databasen
-            String sqlstring = "INSERT INTO tbl_ads (ad_varupris, ad_innehall, ad_rubrik, ad_annonspris" +
+            String sqlstring = "INSERT INTO tbl_ads (ad_varupris, ad_innehall, ad_rubrik, ad_annonspris)" +
             "VALUES (@varupris, @innehall, @rubrik, @annonspris)";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 

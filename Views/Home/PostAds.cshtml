@@ -1,0 +1,50 @@
+﻿@model Annonssystem.Models.AdsDetalj
+
+@{
+    ViewData["Title"] = "PostAds";
+}
+
+<h1>PostAds</h1>
+
+<h4>AdsDetalj</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PostAds">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           @*  <div class="form-group">
+                <label asp-for="ad_id" class="control-label"></label>
+                <input asp-for="ad_id" class="form-control" />
+                <span asp-validation-for="ad_id" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="ad_varupris" class="control-label"></label>
+                <input asp-for="ad_varupris" class="form-control" />
+                <span asp-validation-for="ad_varupris" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ad_innehall" class="control-label"></label>
+                <input asp-for="ad_innehall" class="form-control" />
+                <span asp-validation-for="ad_innehall" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ad_rubrik" class="control-label"></label>
+                <input asp-for="ad_rubrik" class="form-control" />
+                <span asp-validation-for="ad_rubrik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ad_annonspris" class="control-label"></label>
+                <input asp-for="ad_annonspris" class="form-control" />
+                <span asp-validation-for="ad_annonspris" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
