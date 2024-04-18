@@ -35,9 +35,16 @@
                 <td>@Model.pr_telefonnummer</td>
                 <td>@Model.pr_utdelningsadress</td>
                 <td>@Model.pr_postnummer</td>
-                <td>@Model.pr_ort</td>
+                <td>@Model.pr_ort </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditPrenumerant", new { /* id=item.PrimaryKey */ })
+                    @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                </td>
             </tr>
+            
         </table>
+        
     }
     else
     {

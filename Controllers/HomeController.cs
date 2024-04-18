@@ -1,8 +1,11 @@
 ﻿using Annonssystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Web;
+using System.Text;
+
 
 namespace Annonssystem.Controllers
 {
@@ -47,6 +50,53 @@ namespace Annonssystem.Controllers
                 prenumerant = JsonConvert.DeserializeObject<PrenumerantDetalj>(data);
             }
             return View(prenumerant);
+        }
+
+        // Uppdaterar en prenumerant via prenumerationsnummer.
+
+        [HttpGet]
+        public IActionResult EditPrenumerant(int prenumerationsnummer)
+        {
+            try
+            {
+                PrenumerantDetalj prenumerant = new PrenumerantDetalj();
+                HttpResponseMessage response = _client.GetAsync($"{_client.BaseAddress}/Prenumerant/GetPrenumerantByPn?prenumerationsnummer={prenumerationsnummer}").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    prenumerant = JsonConvert.DeserializeObject<PrenumerantDetalj>(data);
+                }
+                return View(prenumerant);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+          
+        }
+        [HttpPost]
+        public IActionResult EditPrenumerant(PrenumerantDetalj prenumerant)
+        {
+            try
+            {
+                string data = JsonConvert.SerializeObject(prenumerant);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PutAsync($"{_client.BaseAddress}/Prenumerant/EditPrenumerant", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "Prenumerant uppdaterad";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
         }
 
 
