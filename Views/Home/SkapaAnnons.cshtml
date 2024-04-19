@@ -1,0 +1,90 @@
+﻿@model Annonssystem.Models.AdsAnnonsorModel
+
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h3>Prenumerant Details</h3>
+
+    <form method="get" action="@Url.Action("GetPrenumerant", "Home")">
+        <label for="prenumerationsnummer">Enter Prenumerationsnummer:</label>
+        <input type="text" id="prenumerationsnummer" name="prenumerationsnummer">
+        <button type="submit">Search</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <table>
+            <tr>
+                <th>Prenumerationsnummer</th>
+                <th>Personnummer</th>
+                <th>Förnamn</th>
+                <th>Efternamn</th>
+                <th>Telefonnummer</th>
+                <th>Utdelningsadress</th>
+                <th>Postnummer</th>
+                <th>Ort</th>
+            </tr>
+            <tr>
+                <td>@Model.pr_prenumerationsnummer</td>
+                <td>@Model.pr_personnummer</td>
+                <td>@Model.pr_fornamn</td>
+                <td>@Model.pr_efternamn</td>
+                <td>@Model.pr_telefonnummer</td>
+                <td>@Model.pr_utdelningsadress</td>
+                <td>@Model.pr_postnummer</td>
+                <td>@Model.pr_ort </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditPrenumerant", new {  id=@Model.pr_prenumerationsnummer  })
+                    @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                </td>
+            </tr>
+
+        </table>
+
+    }
+    else
+    {
+        <p>No prenumerant found with the given ID.</p>
+    }
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="PostAds">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*  <div class="form-group">
+                <label asp-for="ad_id" class="control-label"></label>
+                <input asp-for="ad_id" class="form-control" />
+                <span asp-validation-for="ad_id" class="text-danger"></span>
+                </div> *@
+                <div class="form-group">
+                    <label asp-for="ad_varupris" class="control-label"></label>
+                    <input asp-for="ad_varupris" class="form-control" />
+                    <span asp-validation-for="ad_varupris" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ad_innehall" class="control-label"></label>
+                    <input asp-for="ad_innehall" class="form-control" />
+                    <span asp-validation-for="ad_innehall" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ad_rubrik" class="control-label"></label>
+                    <input asp-for="ad_rubrik" class="form-control" />
+                    <span asp-validation-for="ad_rubrik" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ad_annonspris" class="control-label"></label>
+                    <input asp-for="ad_annonspris" class="form-control" />
+                    <span asp-validation-for="ad_annonspris" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

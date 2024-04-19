@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Annonssystem.Models.AdsDetalj>
+
+@{
+    ViewData["Title"] = "GetAds";
+}
+
+<h1>GetAds</h1>
+@* 
+<p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_varupris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_innehall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_rubrik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_annonspris)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad_varupris)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad_innehall)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad_rubrik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad_annonspris)
+            </td>
+         @*    <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>

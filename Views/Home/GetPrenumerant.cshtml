@@ -37,7 +37,7 @@
                 <td>@Model.pr_postnummer</td>
                 <td>@Model.pr_ort </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditPrenumerant", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "EditPrenumerant", new {  id=@Model.pr_prenumerationsnummer  })
                     @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
                 </td>
@@ -50,5 +50,8 @@
     {
         <p>No prenumerant found with the given ID.</p>
     }
+
+    @Html.ActionLink("Skapa annons", "PostAds", "Home", null, new { @class = "btn btn-primary" })
+
 </body>
 </html>

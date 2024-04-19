@@ -74,31 +74,37 @@ namespace Annonssystem.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
-          
         }
+
         [HttpPost]
         public IActionResult EditPrenumerant(PrenumerantDetalj prenumerant)
         {
             try
             {
                 string data = JsonConvert.SerializeObject(prenumerant);
+
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = _client.PutAsync($"{_client.BaseAddress}/Prenumerant/EditPrenumerant", content).Result;
+
+                HttpResponseMessage response = _client.PutAsync($"{_client.BaseAddress}/Prenumerant/EditPrenumerant?prenumerationsnummer={prenumerant.pr_prenumerationsnummer}", content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["successMessage"] = "Prenumerant uppdaterad";
-                    return RedirectToAction("Index");
+                    TempData["successMessage"] = "Prenumeranten är nu uppdaterad";
+                    return RedirectToAction("SkapaAnnons"); 
+                }
+                else
+                {
+                    // Handle unsuccessful request
+                    TempData["errorMessage"] = "Misslyckades att uppdatera prenumerant. Försök igen senare.";
+                    return View(prenumerant); 
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return View();
+                return View(prenumerant); 
             }
-            return View();
         }
-
 
         public IActionResult Privacy()
         {
@@ -142,7 +148,17 @@ namespace Annonssystem.Controllers
             i = am.PostAds(ad, out error);
             ViewBag.error = error;
 
-            return View();
+            return RedirectToAction("GetAds");
+        }
+
+        public IActionResult GetAds()
+        {
+            List<AdsDetalj> AdsLista = new List<AdsDetalj>();
+            AdsMetoder adm = new AdsMetoder();
+            string error = "";
+            AdsLista = adm.GetAds(out error);
+            ViewBag.error = error;
+            return View(AdsLista);
         }
 
         public IActionResult Annons()
