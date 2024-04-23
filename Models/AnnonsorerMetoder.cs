@@ -15,14 +15,18 @@ namespace Annonssystem.Models
             // Koppling mot SQL Server
             dbConnection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_Annons;Integrated Security=True;";
 
-            // sqlstring och lägg till en student i databasen
+            // sqlstring och lägg till en annonsör i databasen
             String sqlstring = "INSERT INTO tbl_annonsorer (an_prenumerant, an_ads, an_foretag, an_namn, an_organisationsnummer, an_telefonnummer, an_utdelningsadress, an_postnummer, an_ort) " +
-                "VALUES (@prenumerant, @ads, @foretag, @namn, @organisationsnummer, @telefonnummer, @utdelningsadress, @postnummer, @ort)";
+                "VALUES (0, @ads, 1, @namn, @organisationsnummer, @telefonnummer, @utdelningsadress, @postnummer, @ort)";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 
-            dbCommand.Parameters.Add("prenumerant", SqlDbType.Int).Value = ad.an_prenumerant;
+            //dbCommand.Parameters.Add("prenumerant", SqlDbType.Int).Value = ad.an_prenumerant;
+            //dbCommand.Parameters.Add("prenumerant", SqlDbType.Bit).Value = ad.an_prenumerant ? 1 : 0;
+
             dbCommand.Parameters.Add("ads", SqlDbType.Int).Value = ad.an_ads;
-            dbCommand.Parameters.Add("foretag", SqlDbType.Int).Value = ad.an_foretag;
+            //dbCommand.Parameters.Add("foretag", SqlDbType.Int).Value = ad.an_foretag;
+            //dbCommand.Parameters.Add("foretag", SqlDbType.Bit).Value = ad.an_foretag ? 1 : 0;
+
             dbCommand.Parameters.Add("namn", SqlDbType.NVarChar, 50).Value = ad.an_namn;
             dbCommand.Parameters.Add("organisationsnummer", SqlDbType.Int).Value = ad.an_organisationsnummer;
             dbCommand.Parameters.Add("telefonnummer", SqlDbType.Int).Value = ad.an_telefonnummer;

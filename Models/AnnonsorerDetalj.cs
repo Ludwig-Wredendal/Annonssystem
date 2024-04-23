@@ -4,9 +4,9 @@
     {
         public AnnonsorerDetalj(){}
         public int an_id { get; set; }
-        public int an_prenumerant { get; set; }
+        public bool an_prenumerant { get; set; }
         public int an_ads { get; set; }
-        public int an_foretag { get; set; }
+        public bool an_foretag { get; set; }
         public string an_namn { get; set; }
         public int an_organisationsnummer { get; set; }
         public int an_telefonnummer { get; set; }
