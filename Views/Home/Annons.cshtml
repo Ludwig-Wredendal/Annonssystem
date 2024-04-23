@@ -2,7 +2,10 @@
     ViewData["Title"] = "Annons";
 }
 
-<h1>Annons</h1>
+<h3>Annonsera</h3>
+
+<br />
+<p>Här kan du skapa annonser genom att kryssa i om du är ett företag eller prenumerant. </p>
 
 <form id="userForm">
     <div>
@@ -19,19 +22,20 @@
     </div>
     <br />
     <div id="prenumerantSection" style="display:none;">
-        <label for="prenumerationsnummer">Enter Prenumerationsnummer:</label>
+        <label for="prenumerationsnummer">Ange ditt prenumerationsnummer:</label>
         <input type="text" id="prenumerationsnummer" name="prenumerationsnummer">
     </div>
-    <button type="submit">Submit</button>
+    <br />
+    <button type="submit">Godkänn</button>
 </form>
 
 <script>
     document.getElementById("userForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
+        event.preventDefault(); 
         
-        var formData = new FormData(event.target); // Get form data
+        var formData = new FormData(event.target); 
         
-        var annonsType = formData.get("annonsType"); // Get selected radio button value
+        var annonsType = formData.get("annonsType"); 
         
         if (annonsType === "prenumerant") {
             var prenumerationsnummer = formData.get("prenumerationsnummer");
@@ -39,16 +43,12 @@
                 alert("Please enter your Prenumerationsnummer.");
                 return;
             }
-            // Redirect to the action that fetches prenumerant details
+            
             window.location.href = "/Home/GetPrenumerant?prenumerationsnummer=" + encodeURIComponent(prenumerationsnummer);
         } else {
-            // Redirect to the action for företag (business)
-            // Modify the URL as needed
-            window.location.href = "/Home/ForetagAction";
+            window.location.href = "/Home/PostForetag";
         }
     });
-
-    // Show/hide prenumerant section based on radio button selection
     document.querySelectorAll('input[name="annonsType"]').forEach(function(radio) {
         radio.addEventListener("change", function() {
             var prenumerantSection = document.getElementById("prenumerantSection");

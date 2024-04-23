@@ -3,12 +3,27 @@
 @{
     ViewData["Title"] = "GetAds";
 }
+<head>
+    <title>Prenumerant information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-<h1>GetAds</h1>
-@* 
-<p>
-    <a asp-action="Create">Create New</a>
-</p> *@
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<h2>Företag annonser</h2>
 <table class="table">
     <thead>
         <tr>
@@ -31,29 +46,71 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model.Where(x => x.ad_annonspris == 40))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_varupris)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_innehall)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_rubrik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_annonspris)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Prenumerant annonser</h2>
+<table class="table">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ad_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ad_varupris)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ad_innehall)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ad_rubrik)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ad_annonspris)
-            </td>
-         @*    <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td> *@
+            <th>
+                @Html.DisplayNameFor(model => model.ad_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_varupris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_innehall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_rubrik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_annonspris)
+            </th>
+            <th></th>
         </tr>
-}
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x => x.ad_annonspris == 0))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_varupris)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_innehall)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_rubrik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_annonspris)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -127,8 +127,10 @@ namespace Annonssystem.Controllers
             string error = "";
             i = am.PostForetag(ad, out error);
             ViewBag.error = error;
-            
-            return View();
+
+            TempData ["annonsor_sort"] = "foretag";
+
+            return RedirectToAction("PostAds");
         }
 
 
@@ -136,12 +138,19 @@ namespace Annonssystem.Controllers
         [HttpGet]
         public IActionResult PostAds()
         {
+            if (TempData["annonsor_sort"] != null && TempData["annonsor_sort"].ToString() == "foretag")
+            {
+                string userType = "foretag";
+                ViewBag.userType = userType;
+            }
+
             return View();
         }
 
         [HttpPost]
         public IActionResult PostAds(AdsDetalj ad)
         {
+            
             AdsMetoder am = new AdsMetoder();
             int i = 0;
             string error = "";

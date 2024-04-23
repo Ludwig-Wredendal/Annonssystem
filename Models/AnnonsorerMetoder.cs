@@ -53,5 +53,7 @@ namespace Annonssystem.Models
                 dbCommand.Connection.Close();
             }
         }
+
+        
     }
 }
