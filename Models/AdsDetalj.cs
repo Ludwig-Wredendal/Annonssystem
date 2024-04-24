@@ -21,6 +21,6 @@ namespace Annonssystem.Models
         public int ad_annonspris { get; set; }
 
         [DisplayName("Annonsör ID (företag)")]
-        public int ad_annonsor {  get; set; }
+        public int? ad_annonsor { get; set; }
     }
 }

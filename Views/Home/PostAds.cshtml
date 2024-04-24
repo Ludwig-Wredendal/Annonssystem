@@ -4,9 +4,9 @@
     ViewData["Title"] = "PostAds";
 }
 
-<h1>PostAds</h1>
 
-<h4>AdsDetalj</h4>
+
+<h4>Skapa en annons</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -44,6 +44,19 @@
                 <input asp-for="ad_annonsor" class="form-control" />
                 <span asp-validation-for="ad_annonsor" class="text-danger"></span>
             </div>
+
+            @* @if ((string)ViewBag.userType == "foretag")
+            {
+                <div class="form-group">
+                    <label asp-for="ad_annonsor" class="control-label"></label>
+                    <input asp-for="ad_annonsor" class="form-control" />
+                    <span asp-validation-for="ad_annonsor" class="text-danger"></span>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" asp-for="ad_annonsor" />
+            } *@
 
             <input type="hidden" name="userType" value="@ViewBag.userType" />
 
