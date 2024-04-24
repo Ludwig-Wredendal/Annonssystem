@@ -42,6 +42,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ad_annonspris)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad_annonsor)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -64,6 +67,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ad_annonspris)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ad_annonsor)
+                </td>
+                <td>@Html.ActionLink("Details", "ForetagDetails", new {  id=item.ad_annonsor  })</td>
             </tr>
         }
     </tbody>

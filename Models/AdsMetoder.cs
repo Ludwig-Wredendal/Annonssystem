@@ -21,15 +21,16 @@ namespace Annonssystem.Models
             // Koppling mot SQL Server
             dbConnection.ConnectionString = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = db_Annons; Integrated Security = True";
 
-            // sqlstring och lägg till en student i databasen
-            String sqlstring = "INSERT INTO tbl_ads (ad_varupris, ad_innehall, ad_rubrik, ad_annonspris)" +
-            "VALUES (@varupris, @innehall, @rubrik, @annonspris)";
+            // sqlstring och lägg till en annons i databasen
+            String sqlstring = "INSERT INTO tbl_ads (ad_varupris, ad_innehall, ad_rubrik, ad_annonspris, ad_annonsor)" +
+            "VALUES (@varupris, @innehall, @rubrik, @annonspris, @annonsor)";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 
             dbCommand.Parameters.Add("varupris", SqlDbType.Int).Value = ad.ad_varupris;
             dbCommand.Parameters.Add("innehall", SqlDbType.NVarChar, 50).Value = ad.ad_innehall;
             dbCommand.Parameters.Add("rubrik", SqlDbType.NVarChar, 50).Value = ad.ad_rubrik;
             dbCommand.Parameters.Add("annonspris", SqlDbType.Int).Value = ad.ad_annonspris;
+            dbCommand.Parameters.Add("annonsor", SqlDbType.Int).Value = ad.ad_annonsor;
 
             try
             {
@@ -91,6 +92,7 @@ namespace Annonssystem.Models
                     ads.ad_innehall = reader["ad_innehall"].ToString();
                     ads.ad_rubrik = reader["ad_rubrik"].ToString();
                     ads.ad_annonspris = Convert.ToInt32(reader["ad_annonspris"]);
+                    ads.ad_annonsor = Convert.ToInt32(reader["ad_annonsor"]);
 
                     AdsLista.Add(ads);
                 }

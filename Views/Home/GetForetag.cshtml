@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Annonssystem.Models.AnnonsorerDetalj>
+
+@{
+    ViewData["Title"] = "GetForetag";
+}
+
+<h1>GetForetag</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.an_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_prenumerant)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.an_foretag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_namn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_organisationsnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_telefonnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_utdelningsadress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_postnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.an_ort)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_prenumerant)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.an_foretag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_namn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_organisationsnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_telefonnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_utdelningsadress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_postnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.an_ort)
+            </td>
+            <td>
+@*                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                *@                @Html.ActionLink("Details", "ForetagDetails", new {  id=item.an_id  }) |
+@*                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+ *@            </td>
+        </tr>
+}
+    </tbody>
+</table>

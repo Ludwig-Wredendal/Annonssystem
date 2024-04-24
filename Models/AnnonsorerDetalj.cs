@@ -12,8 +12,6 @@ namespace Annonssystem.Models
         [DisplayName("Prenumerant")]
         public bool an_prenumerant { get; set; }
 
-        [DisplayName("Annons")]
-        public int an_ads { get; set; }
 
         [DisplayName("Företag")]
         public bool an_foretag { get; set; }

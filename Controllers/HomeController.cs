@@ -133,6 +133,26 @@ namespace Annonssystem.Controllers
             return RedirectToAction("PostAds");
         }
 
+        public ActionResult ForetagDetails(int id)
+        {
+            AnnonsorerDetalj Annonsor = new AnnonsorerDetalj();
+            AnnonsorerMetoder am = new AnnonsorerMetoder();
+            Annonsor = am.GetForetag(id, out string error);
+            ViewBag.error = error;
+            return View(Annonsor);
+        }
+
+        [HttpGet]
+        public IActionResult GetForetag()
+        {
+            List<AnnonsorerDetalj> foretaglista = new List<AnnonsorerDetalj>();
+            AnnonsorerMetoder am = new AnnonsorerMetoder();
+            string error = "";
+            foretaglista = am.GetForetag(out error);
+            ViewBag.error = error;
+            return View(foretaglista);
+        }
+
 
         /* ANNONS TJOFS */
         [HttpGet]

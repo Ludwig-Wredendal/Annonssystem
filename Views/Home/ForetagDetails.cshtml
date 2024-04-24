@@ -1,0 +1,72 @@
+﻿@model Annonssystem.Models.AnnonsorerDetalj
+
+@{
+    ViewData["Title"] = "ForetagDetails";
+}
+
+<h3>ForetagDetails</h3>
+
+<div>
+    <h4>AnnonsorerDetalj</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_prenumerant)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_prenumerant)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_foretag)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_foretag)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_namn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_namn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_organisationsnummer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_organisationsnummer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_telefonnummer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_telefonnummer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_utdelningsadress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_utdelningsadress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_postnummer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_postnummer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.an_ort)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.an_ort)
+        </dd>
+    </dl>
+</div>
+<div>
+@*     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+ *@    <a asp-action="GetAds">Tillbaka till annonser</a>
+</div>
